@@ -52,3 +52,5 @@
 
 # se instalo esto 
 >> composer require fruitcake/laravel-cors
+
+>> esto es solo informativo
