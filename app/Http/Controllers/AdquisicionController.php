@@ -79,6 +79,7 @@ class AdquisicionController extends Controller
             'fecha_adquisicion' => 'required',
             'unidad_id' => 'required|exists:unidades,id',
             'tipo_id' => 'required|exists:tipos,id',
+            'documentacion' => 'string',
             'proveedor_id' => 'required|exists:proveedores,id',
         ];
 
