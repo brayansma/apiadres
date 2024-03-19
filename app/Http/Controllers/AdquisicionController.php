@@ -23,6 +23,7 @@ class AdquisicionController extends Controller
                 'cantidad' => $adquisicion->cantidad,
                 'unidad_id' => $adquisicion->unidad_id,
                 'tipo_id' => $adquisicion->tipo_id,
+                'documentacion' => $adquisicion->documentacion,
                 'proveedor_id' => $adquisicion->proveedor_id,
                 'created_at' => $adquisicion->created_at->format('Y-m-d'),
                 'updated_at' => $adquisicion->updated_at->format('Y-m-d')
@@ -48,6 +49,7 @@ class AdquisicionController extends Controller
             'cantidad' => $adquisicion->cantidad,
             'unidad_id' => $adquisicion->unidad_id,
             'tipo_id' => $adquisicion->tipo_id,
+            'documentacion' => $adquisicion->documentacion,
             'proveedor_id' => $adquisicion->proveedor_id,
             'created_at' => $adquisicion->created_at->format('Y-m-d'),
             'updated_at' => $adquisicion->updated_at->format('Y-m-d')
@@ -123,6 +125,7 @@ class AdquisicionController extends Controller
                 'cantidad' => $adquisicion->cantidad,
                 'unidad_id' => $adquisicion->unidad_id,
                 'tipo_id' => $adquisicion->tipo_id,
+                'documentacion' => $adquisicion->documentacion,
                 'proveedor_id' => $adquisicion->proveedor_id,
                 'created_at' => $adquisicion->created_at->format('Y-m-d'),
                 'updated_at' => $adquisicion->updated_at->format('Y-m-d')
@@ -218,6 +221,7 @@ class AdquisicionController extends Controller
                 'cantidad' => $adquisicion->cantidad,
                 'unidad_id' => $adquisicion->unidad_id,
                 'tipo_id' => $adquisicion->tipo_id,
+                'documentacion' => $adquisicion->documentacion,
                 'proveedor_id' => $adquisicion->proveedor_id,
                 'created_at' => $adquisicion->created_at->format('Y-m-d'),
                 'updated_at' => $adquisicion->updated_at->format('Y-m-d')
@@ -265,6 +269,7 @@ class AdquisicionController extends Controller
                 'cantidad' => $adquisicion->cantidad,
                 'unidad_id' => $adquisicion->unidad_id,
                 'tipo_id' => $adquisicion->tipo_id,
+                'documentacion' => $adquisicion->documentacion,
                 'proveedor_id' => $adquisicion->proveedor_id,
                 'created_at' => $adquisicion->created_at->format('Y-m-d'),
                 'updated_at' => $adquisicion->updated_at->format('Y-m-d')
