@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\Validator;
 
 class UnidadController extends Controller
 {
-    // Método para mostrar todas las unidades
     public function index()
     {
-        #$unidades = Unidad::all();
         $unidades = Unidad::select('id', 'nombre', 'created_at', 'updated_at')->get()->map(function ($unidad) {
             return [
                 'id' => $unidad->id,
@@ -24,14 +22,13 @@ class UnidadController extends Controller
         return response()->json(['data' =>$unidades], 200);
     }
 
-    // Método para mostrar una unidad específica por su ID
     public function show($id)
     {
         $unidad = Unidad::find($id);
         if (!$unidad) {
             return response()->json(['message' => 'Unidad no encontrada'], 404);
         }
-        #return response()->json($unidad, 200);
+
         return response()->json([ 'data' =>[
             'id' => $unidad->id,
             'nombre' => $unidad->nombre,
@@ -40,7 +37,6 @@ class UnidadController extends Controller
         ]], 200);
     }
 
-    // Método para almacenar una nueva unidad
     public function store(Request $request)
     {
         $messages = [
@@ -60,7 +56,6 @@ class UnidadController extends Controller
 
         $unidad = Unidad::create($request->all());
 
-        #return response()->json(['message' => 'Unidad creada correctamente', 'data' => $unidad], 201);
         return response()->json([
             'message' => 'Unidad creada correctamente',
             'data' => [
@@ -72,7 +67,6 @@ class UnidadController extends Controller
         ], 201);
     }
 
-    // Método para actualizar una unidad existente
     public function update(Request $request, $id)
     {
 
@@ -99,9 +93,7 @@ class UnidadController extends Controller
         $unidad = Unidad::findOrFail($id);
         $unidad->nombre = $request->input('nombre');
         $unidad->update($request->all());
-        #$unidad->save();
 
-        #return response()->json(['message' => 'Unidad actualizada correctamente', 'data' => $unidad], 200);
         return response()->json([
             'message' => 'Unidad actualizada correctamente', 'data' => [
                 'id' => $unidad->id,
@@ -112,7 +104,6 @@ class UnidadController extends Controller
         ], 200);
     }
 
-    // Método para eliminar una unidad
     public function destroy($id)
     {
         $unidad = Unidad::find($id);
@@ -138,7 +129,6 @@ class UnidadController extends Controller
             return response()->json(['error' => 'La unidad no está eliminada'], 400);
         }
 
-        // Restaurar el modelo eliminado
         $unidad->restore();
 
         return response()->json([

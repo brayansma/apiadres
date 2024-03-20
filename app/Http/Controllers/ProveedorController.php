@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Validator;
 
 class ProveedorController extends Controller
 {
-    // Método para mostrar todos los proveedores
     public function index()
     {
         $proveedores = Proveedor::all()->map(function ($proveedor) {
@@ -23,7 +22,6 @@ class ProveedorController extends Controller
         return response()->json( ['data' =>$proveedores], 200);
     }
 
-    // Método para mostrar un proveedor específico por su ID
     public function show($id)
     {
         $proveedor = Proveedor::find($id);
@@ -38,7 +36,6 @@ class ProveedorController extends Controller
         ]], 200);
     }
 
-    // Método para almacenar un nuevo proveedor
     public function store(Request $request)
     {
         $messages = [
@@ -69,7 +66,6 @@ class ProveedorController extends Controller
         ], 201);
     }
 
-    // Método para actualizar un proveedor existente
     public function update(Request $request, $id)
     {
         $proveedor = Proveedor::find($id);
@@ -107,7 +103,6 @@ class ProveedorController extends Controller
         ], 200);
     }
 
-    // Método para eliminar un proveedor
     public function destroy($id)
     {
         $proveedor = Proveedor::find($id);
@@ -120,7 +115,6 @@ class ProveedorController extends Controller
         return response()->json(['message' => 'Proveedor eliminado correctamente'], 200);
     }
 
-    // Método para restaurar un proveedor eliminado
     public function restore($id)
     {
         $proveedor = Proveedor::withTrashed()->find($id);

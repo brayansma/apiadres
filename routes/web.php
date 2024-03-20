@@ -12,23 +12,12 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-/* use App\Http\Controllers\AdquisicionController;
-use Illuminate\Support\Facades\Route; */
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
 
-// Rutas para Unidad
-/* $router->get('/unidades', 'UnidadController@index');
-$router->get('/unidades/{id}', 'UnidadController@show');
-$router->post('/unidades', 'UnidadController@store');
-$router->put('/unidades/{id}', 'UnidadController@update');
-$router->delete('/unidades/{id}', 'UnidadController@destroy');
-$router->patch('unidades/{id}/restore', 'UnidadController@restore'); */
-
-// Rutas para Unidad
 $router->group(['prefix' => 'unidades'], function () use ($router) {
     $router->get('/', 'UnidadController@index');
     $router->get('/{id}', 'UnidadController@show');
@@ -38,7 +27,7 @@ $router->group(['prefix' => 'unidades'], function () use ($router) {
     $router->patch('/{id}/restore', 'UnidadController@restore');
 });
 
-// Rutas para tipos
+
 $router->group(['prefix' => 'tipos'], function () use ($router) {
     $router->get('/', 'TipoController@index');
     $router->get('/{id}', 'TipoController@show');
@@ -48,7 +37,7 @@ $router->group(['prefix' => 'tipos'], function () use ($router) {
     $router->patch('/{id}/restore', 'TipoController@restore');
 });
 
-// Define las rutas para los proveedores
+
 $router->group(['prefix' => 'proveedores'], function () use ($router) {
     $router->get('/', 'ProveedorController@index'); 
     $router->get('/{id}', 'ProveedorController@show'); 
@@ -58,7 +47,7 @@ $router->group(['prefix' => 'proveedores'], function () use ($router) {
     $router->patch('/{id}/restore', 'ProveedorController@restore'); 
 });
 
-// Define las rutas para los proveedores
+
 $router->group(['prefix' => 'adquisiciones'], function () use ($router) {
     $router->get('/', 'AdquisicionController@index'); 
     $router->get('/{id}', 'AdquisicionController@show'); 
@@ -69,10 +58,4 @@ $router->group(['prefix' => 'adquisiciones'], function () use ($router) {
 });
 
 
-/* Route::get('/adquisiciones', [AdquisicionController::class, 'index']);
-Route::get('/adquisiciones/{id}', [AdquisicionController::class, 'show']);
-Route::post('/adquisiciones', [AdquisicionController::class, 'store']);
-Route::put('/adquisiciones/{id}', [AdquisicionController::class, 'update']);
-Route::patch('/adquisiciones/{id}', [AdquisicionController::class, 'restore']); 
-Route::delete('/adquisiciones/{id}', [AdquisicionController::class, 'destroy']);
- */
+

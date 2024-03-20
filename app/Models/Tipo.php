@@ -12,7 +12,7 @@ class Tipo extends Model
     protected $fillable = ['nombre', 'categoria'];
     protected $hidden = ['deleted_at'];
     protected $casts = [
-        'categoria' => 'string', // Enum se maneja como string
+        'categoria' => 'string', 
     ];
     
 }

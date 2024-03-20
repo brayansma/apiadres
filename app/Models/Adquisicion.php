@@ -23,7 +23,6 @@ class Adquisicion extends Model
         'proveedor_id'
     ];
 
-    #protected $dates = ['deleted_at'];
     protected $hidden = ['deleted_at'];
 
     public function unidad()

@@ -10,7 +10,7 @@ class TipoController extends Controller
 {
     public function index()
     {
-        #$tipos = Tipo::select('id', 'nombre', 'categoria', 'created_at', 'updated_at')->get();
+
         $tipos = Tipo::select('id', 'nombre', 'categoria', 'created_at', 'updated_at')->get()->map(function ($tipo) {
             return [
                 'id' => $tipo->id,
@@ -29,7 +29,7 @@ class TipoController extends Controller
         if (!$tipo) {
             return response()->json(['message' => 'Tipo no encontrado'], 404);
         }
-        #return response()->json($tipo, 200);
+
         return response()->json(['data' =>[
             'id' => $tipo->id,
             'nombre' => $tipo->nombre,
@@ -70,7 +70,6 @@ class TipoController extends Controller
             ]
         ], 201);
 
-        #return response()->json($tipo, 201);
     }
 
     public function update(Request $request, $id)
@@ -100,7 +99,6 @@ class TipoController extends Controller
         $tipo = Tipo::findOrFail($id);
         $tipo->update($request->all());
 
-        #return response()->json($tipo, 200);
         return response()->json([
             'message' => 'Tipo actualizado correctamente', 'data' => [
                 'id' => $tipo->id,

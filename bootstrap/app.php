@@ -37,15 +37,11 @@ $app->withEloquent();
 | your own bindings here if you like or you can make another file.
 |
 */
-##### PERMITIR ACCESOS REMOTOS AL SERVIDIOR
+
 $app->middleware([
-    // Otros middlewares
-    #Este permite los accesos remotos del Access-Control-Allow-Origin 
     App\Http\Middleware\CorsMiddleware::class,
-    #Este valida las rutas no encontradas
     \App\Http\Middleware\NotFoundHandlerMiddleware::class,
 ]);
-##########PERMITIR ACCESOS REMOTOS AL SERVIDOR
 
 
 

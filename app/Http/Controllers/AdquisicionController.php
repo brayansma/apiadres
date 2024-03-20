@@ -36,7 +36,6 @@ class AdquisicionController extends Controller
     public function show($id)
     {
         $adquisicion = Adquisicion::findOrFail($id);
-        #$adquisicion = Adquisicion::find($id);
         if (!$adquisicion) {
             return response()->json(['message' => 'Adquisicion no encontrado'], 404);
         }
@@ -69,8 +68,7 @@ class AdquisicionController extends Controller
             'tipo_id.exists' => 'El campo tipo_id no corresponde a un tipo existente.',
             'proveedor_id.exists' => 'El campo proveedor_id no corresponde a un proveedor existente.',
         ];
-        /*  $adquisicion = Adquisicion::create($request->all());
-        return response()->json($adquisicion, 201); */
+
         $rules = [
             'presupuesto' => 'required|numeric',
             'cantidad' => 'required|integer',
@@ -83,19 +81,12 @@ class AdquisicionController extends Controller
             'proveedor_id' => 'required|exists:proveedores,id',
         ];
 
-        // Realiza la validación
         $validator = Validator::make($request->all(), $rules, $messages);
-
-        // Verifica si la validación falla
         if ($validator->fails()) {
-            // Retorna un error de validación con los mensajes correspondientes
             return response()->json(['errors' => $validator->errors()], 422);
         }
-
-        // Obtiene los datos validados
         $validatedData = $validator->validated();
 
-        // Verifica si existen los registros referenciados por claves foráneas
         $unidadExists = Unidad::find($validatedData['unidad_id']);
         $tipoExists = Tipo::find($validatedData['tipo_id']);
         $proveedorExists = Proveedor::find($validatedData['proveedor_id']);
@@ -132,20 +123,6 @@ class AdquisicionController extends Controller
                 'updated_at' => $adquisicion->updated_at->format('Y-m-d')
             ]
         ], 201);
-
-        // Si todos los registros referenciados existen, procede con la inserción
-        /* $adquisicion = new Adquisicion();
-        $adquisicion->presupuesto = $validatedData['presupuesto'];
-        $adquisicion->valor_unitario = $validatedData['valor_unitario'];
-        $adquisicion->valor_total = $validatedData['valor_total'];
-        $adquisicion->fecha_adquisicion = $validatedData['fecha_adquisicion'];
-        $adquisicion->cantidad = $validatedData['cantidad'];
-        $adquisicion->unidad_id = $validatedData['unidad_id'];
-        $adquisicion->tipo_id = $validatedData['tipo_id'];
-        $adquisicion->proveedor_id = $validatedData['proveedor_id'];
-        $adquisicion->save(); */
-        // Retorna una respuesta de éxito
-        //return response()->json(['message' => 'Adquisición creada correctamente.'], 201);
     }
 
     public function update(Request $request, $id)
@@ -165,8 +142,7 @@ class AdquisicionController extends Controller
             'tipo_id.exists' => 'El campo tipo_id no corresponde a un tipo existente.',
             'proveedor_id.exists' => 'El campo proveedor_id no corresponde a un proveedor existente.',
         ];
-        /*  $adquisicion = Adquisicion::create($request->all());
-        return response()->json($adquisicion, 201); */
+       
         $rules = [
             'presupuesto' => 'required|numeric',
             'cantidad' => 'required|integer',
@@ -178,19 +154,16 @@ class AdquisicionController extends Controller
             'proveedor_id' => 'required|exists:proveedores,id',
         ];
 
-        // Realiza la validación
+      
         $validator = Validator::make($request->all(), $rules, $messages);
 
-        // Verifica si la validación falla
         if ($validator->fails()) {
-            // Retorna un error de validación con los mensajes correspondientes
+
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        // Obtiene los datos validados
         $validatedData = $validator->validated();
 
-        // Verifica si existen los registros referenciados por claves foráneas
         $unidadExists = Unidad::find($validatedData['unidad_id']);
         $tipoExists = Tipo::find($validatedData['tipo_id']);
         $proveedorExists = Proveedor::find($validatedData['proveedor_id']);
@@ -228,7 +201,6 @@ class AdquisicionController extends Controller
                 'updated_at' => $adquisicion->updated_at->format('Y-m-d')
             ]
         ], 201);
-        //return response()->json($adquisicion, 200);
     }
 
     public function destroy($id)
